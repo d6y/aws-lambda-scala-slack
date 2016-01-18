@@ -15,13 +15,13 @@ class TimeSpec extends FreeSpec {
     }
 
     "should pick out known names" in {
-      assert(DateAndTime.zoneIdOf("London") == Some(ZoneId.of("Europe/London")))
+      assert(DateAndTime.zoneIdOf("london") == Some(ZoneId.of("Europe/London")))
       assert(DateAndTime.zoneIdOf("sydney") == Some(ZoneId.of("Australia/Sydney")))
       assert(DateAndTime.zoneIdOf("wibble") == None)
     }
 
     "should pick out aliases" in {
-      assert(DateAndTime.zoneIdOf("Brighton") == Some(ZoneId.of("Europe/London")))
+      assert(DateAndTime.zoneIdOf("brighton") == Some(ZoneId.of("Europe/London")))
     }
 
     "should describe a known place" in {
@@ -29,7 +29,7 @@ class TimeSpec extends FreeSpec {
       assertResult("In Brighton it's 21:49 on Sunday") {
         DateAndTime.describe(now, "Brighton", Some(ZoneId.of("Europe/London")))
       }
-      assertResult("In Sydney it's 8:49 on Monday") {
+      assertResult("In Sydney it's 08:49 on Monday") {
         DateAndTime.describe(now, "Sydney", Some(ZoneId.of("Australia/Sydney")))
       }
     }

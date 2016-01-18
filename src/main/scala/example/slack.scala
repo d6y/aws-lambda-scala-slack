@@ -32,14 +32,15 @@ class Slack {
     val payload = scala.io.Source.fromInputStream(in).mkString("")
 
     val reply = decode[SlashCommand](payload) match {
-      case Right(cmd) if cmd.text.isEmpty => s"Usage: /time brighon sydney new-york"
+      case Right(cmd) if cmd.text.isEmpty => s"Usage: /time brighton sydney new-york"
       case Left(err)  => s"Sorry, I don't understand that: $err"
       case Right(cmd) =>
         val now = Instant.now
         val places = names(cmd.text)
-        val descriptions = places.map(name => describe(now, name, zoneIdOf(name)))
+        val descriptions = places.map(name => describe(now, name, zoneIdOf(name.toLowerCase)))
         LongResponse(descriptions.mkString("\n")).asJson.noSpaces
     }
+
     out.write(reply.getBytes(UTF_8))
   }
 
