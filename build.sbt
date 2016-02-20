@@ -2,6 +2,23 @@ scalaVersion := "2.11.7"
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 
+scalacOptions ++= Seq(
+    "-deprecation",
+    "-encoding", "UTF-8",
+    "-feature",
+    "-language:existentials",
+    "-language:higherKinds",
+    "-language:implicitConversions",
+    "-unchecked",
+    "-Xfatal-warnings",
+    "-Xlint",
+    "-Yno-adapted-args",
+    "-Ywarn-dead-code",
+    "-Ywarn-numeric-widen",
+    "-Ywarn-value-discard",
+    "-Xfuture"
+  )
+
 libraryDependencies ++= Seq(
   "com.amazonaws" % "aws-lambda-java-core"   % "1.1.0" % Provided,
   "com.amazonaws" % "aws-lambda-java-events" % "1.1.0" % Provided
