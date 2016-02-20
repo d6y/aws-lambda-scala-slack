@@ -13,3 +13,5 @@ sbt assembly
 ```
 
 ...and deploy the JAR to your Lambda environment. The function name is: `example.Slack::time`
+
+I've [written a blog post](http://underscore.io/blog/posts/2016/02/01/aws-lambda.html) on this.
